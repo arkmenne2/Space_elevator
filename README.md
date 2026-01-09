@@ -1,11 +1,11 @@
-#Factorio Space Elevator Mod
+# Factorio Space Elevator Mod
 
-#Project Description
+## Project Description
 
 This repository contains the development of a Factorio mod introducing a Space Elevator for Factorio: Space Age. The mod aims to provide a scalable, infrastructure-based solution for interplanetary logistics and to expand the role of in-space manufacturing while remaining balanced, readable, and compatible with existing gameplay systems.
 
 
-#Core Features (Planned)
+## Core Features (Planned)
 
 Space Elevator structure connecting planetary surfaces and orbit
 
@@ -17,7 +17,7 @@ Compatibility with selected popular mods
 
 Optional custom sprites for visual clarity and identity
 
-#Tech Stack
+## Tech Stack
 
 Language: Lua
 
@@ -27,28 +27,30 @@ Version Control: Git
 
 Target Platform: Factorio Mod Portal (planned)
 
-#Repository Structure (Planned)
+## Repository Structure (Planned)
+
+```
 
 /space-elevator-mod
-├── data/            # Prototypes and definitions
-├── control/         # Runtime logic
-├── graphics/        # Sprites and icons
-├── locale/          # Localization files
-├── docs/            # Design and research documentation
+├── data/ # Prototypes and definitions
+├── control/ # Runtime logic
+├── graphics/ # Sprites and icons
+├── locale/ # Localization files
+├── docs/ # Design and research documentation
 ├── README.md
 └── info.json
 
+```
 
-
-#Installation
+## Installation
 
 TBD
 
-#project Status
+## project Status
 
 🚧 In development
 
-#License
+## License
 
 TBD
 
