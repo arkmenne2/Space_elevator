@@ -4,7 +4,7 @@ local space_elevator = {
     icon = "__space-elevator__/graphics/icons/space-elevator.png",
     icon_size = 64,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 8, result = "space-elevator"},
+    minable = {mining_time = 2, result = "space-elevator"},
     max_health = 5000,
     corpse = "big-remnants",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
@@ -14,9 +14,9 @@ local space_elevator = {
     energy_source = {
     type = "electric",
     usage_priority = "secondary-input",
-    emissions_per_minute = 0
+    emissions = 0
     },
-    energy_usage = "500MW",
+    energy_usage = "50MW",
     animation = {
     layers = {
     {
