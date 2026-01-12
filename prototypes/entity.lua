@@ -21,13 +21,11 @@ data:extend({
         usage_priority = "secondary-input"
       },
       energy_usage = "1MW",
-  
       animation = {
-        filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
-        width = 85,
-        height = 87,
-        frame_count = 1,
-        shift = {0, 0}
+        filename = "__core__/graphics/empty.png",
+        width = 1,
+        height = 1,
+        frame_count = 1
       }
     }
   })
