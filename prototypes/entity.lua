@@ -1,31 +1,65 @@
 data:extend({
-    {
-      type = "assembling-machine",
-      name = "space-elevator",
+  icon_size = 64,
   
-      icon = "__space-elevator__/graphics/icons/space-elevator.png",
-      icon_size = 32,
   
-      flags = {"placeable-neutral", "player-creation"},
-      minable = {mining_time = 1, result = "space-elevator"},
-      max_health = 1000,
+  flags = {"placeable-neutral", "player-creation"},
+  minable = {mining_time = 2, result = "space-elevator"},
+  max_health = 5000,
   
-      collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
-      selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
   
-      crafting_categories = {"crafting"},
-      crafting_speed = 1,
+  collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
+  selection_box = {{-5, -5}, {5, 5}},
   
-      energy_source = {
-        type = "electric",
-        usage_priority = "secondary-input"
-      },
-      energy_usage = "1MW",
-      animation = {
-        filename = "__core__/graphics/empty.png",
-        width = 1,
-        height = 1,
-        frame_count = 1
-      }
-    }
+  
+  fluid_boxes = {
+  {
+  production_type = "input",
+  base_area = 1000,
+  pipe_connections = {{ position = {-5, -5} }}
+  },
+  {
+  production_type = "input",
+  base_area = 1000,
+  pipe_connections = {{ position = {5, -5} }}
+  },
+  {
+  production_type = "input",
+  base_area = 1000,
+  pipe_connections = {{ position = {-5, 5} }}
+  },
+  {
+  production_type = "input",
+  base_area = 1000,
+  pipe_connections = {{ position = {5, 5} }}
+  },
+  off_when_no_fluid_recipe = false
+  },
+  
+  
+  energy_source = {
+  type = "electric",
+  usage_priority = "secondary-input"
+  },
+  energy_usage = "5GW",
+  
+  
+  crafting_categories = {"space-elevator-transfer"},
+  crafting_speed = 10000, -- items per second placeholder
+  
+  
+  ingredient_count = 50,
+  
+  
+  animation = {
+  layers = {
+  {
+  filename = "__base__/graphics/entity/rocket-silo/rocket-silo.png",
+  width = 300,
+  height = 300,
+  frame_count = 1,
+  shift = {0, -0.5}
+  }
+  }
+  }
+  }
   })
