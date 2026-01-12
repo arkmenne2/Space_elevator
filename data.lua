@@ -1,2 +1,3 @@
-require("prototypes.space_elevator")
+require("prototypes.entity")
 require("prototypes.item")
+require("prototypes.recipe")
