@@ -4,7 +4,7 @@ data:extend({
     name = "space-elevator",
 
     icon = "__space-elevator__/graphics/icons/space-elevator.png",
-    icon_size = 64,
+    icon_size = 32,
 
     subgroup = "production-machine",
     order = "z[space-elevator]",
