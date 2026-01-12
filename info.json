@@ -1,8 +1,8 @@
 {
-    "name": "space-elevator",
-    "version": "0.1.0",
-    "title": "Space Elevator",
-    "author": "marti",
-    "factorio_version": "2.0",
-    "description": "Adds a late-game Space Elevator for interplanetary logistics"
-  }
+  "name": "space-elevator",
+  "version": "0.1.0",
+  "title": "Space Elevator",
+  "author": "marti",
+  "factorio_version": "2.0",
+  "description": "Test visibility mod"
+}
