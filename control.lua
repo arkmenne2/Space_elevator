@@ -38,21 +38,34 @@ local function ensure_orbit_surface()
   surface.show_clouds = false
   surface.brightness_visual_weights = {1, 1, 1}
 
-  -- Fill with space platform tiles so it’s not void
   local tiles = {}
+
+
+  -- Background: empty space
   for x = -64, 63 do
     for y = -64, 63 do
       tiles[#tiles+1] = {
-        name = "space-platform",
+        name = "out-of-map",
         position = {x, y}
       }
     end
   end
+  
+  local PLATFORM_RADIUS = 20
+  
+  for x = -PLATFORM_RADIUS, PLATFORM_RADIUS do
+    for y = -PLATFORM_RADIUS, PLATFORM_RADIUS do
+      tiles[#tiles+1] = {
+        name = "space-platform-floor",   
+        position = {x, y}
+      }
+    end
+  end
+  
   surface.set_tiles(tiles)
 end
 
 
--- Elevator placement
 
 
 local build_events = {
@@ -69,14 +82,28 @@ script.on_event(build_events, function(event)
   if not (entity and entity.valid and entity.name == ELEVATOR_NAME) then return end
 
 
-  ensure_orbit_surface()
-  local surface = game.surfaces[ORBIT_SURFACE_NAME]
-
-  local platform = surface.create_entity({
-    name = PLATFORM_NAME,
-    position = {0.5, 0.5},
-    force = entity.force
-  })
+  local tiles = {}
+  for x = -64, 63 do
+    for y = -64, 63 do
+      tiles[#tiles+1] = {
+        name = "out-of-map",
+        position = {x, y}
+      }
+    end
+  end
+  
+  local PLATFORM_RADIUS = 20
+  
+  for x = -PLATFORM_RADIUS, PLATFORM_RADIUS do
+    for y = -PLATFORM_RADIUS, PLATFORM_RADIUS do
+      tiles[#tiles+1] = {
+        name = "refined-concrete",
+        position = {x, y}
+      }
+    end
+  end
+  
+  surface.set_tiles(tiles)
 
 
 
