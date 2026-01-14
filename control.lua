@@ -5,9 +5,6 @@ local ORBIT_SURFACE_NAME = "space-elevator-orbit"
 -- 10,000 items/sec @ 60 UPS
 local MAX_TRANSFER_PER_TICK = 167
 
-------------------------------------------------------------
--- Global initialization (MUST be callable everywhere)
-------------------------------------------------------------
 
 local function ensure_globals()
   if not global then global = {} end
@@ -22,46 +19,73 @@ script.on_configuration_changed(function()
   ensure_globals()
 end)
 
-------------------------------------------------------------
+
 -- Orbit surface
-------------------------------------------------------------
 
 local function ensure_orbit_surface()
   if game.surfaces[ORBIT_SURFACE_NAME] then return end
 
-  game.create_surface(ORBIT_SURFACE_NAME, {
-    width = 64,
-    height = 64,
-    starting_area = "none",
+  -- Create surface
+  local surface = game.create_surface(ORBIT_SURFACE_NAME, {
+    width = 128,
+    height = 128,
     peaceful_mode = true
   })
+
+  -- Lighting / visual settings
+  surface.daytime = 0.5
+  surface.freeze_daytime = true
+  surface.show_clouds = false
+  surface.brightness_visual_weights = {1, 1, 1}
+
+  -- Fill with space platform tiles so it’s not void
+  local tiles = {}
+  for x = -64, 63 do
+    for y = -64, 63 do
+      tiles[#tiles+1] = {
+        name = "space-platform",
+        position = {x, y}
+      }
+    end
+  end
+  surface.set_tiles(tiles)
 end
 
-------------------------------------------------------------
--- Elevator placement
-------------------------------------------------------------
 
-script.on_event(defines.events.on_built_entity, function(event)
+-- Elevator placement
+
+
+local build_events = {
+  defines.events.on_built_entity,
+  defines.events.on_robot_built_entity,
+  defines.events.script_raised_built,
+  defines.events.script_raised_revive
+}
+
+script.on_event(build_events, function(event)
   ensure_globals()
 
-  local entity = event.created_entity
+  local entity = event.created_entity or event.entity
   if not (entity and entity.valid and entity.name == ELEVATOR_NAME) then return end
+
 
   ensure_orbit_surface()
   local surface = game.surfaces[ORBIT_SURFACE_NAME]
 
   local platform = surface.create_entity({
     name = PLATFORM_NAME,
-    position = {0, 0},
+    position = {0.5, 0.5},
     force = entity.force
   })
+
+
 
   global.elevators[entity.unit_number] = true
 end)
 
-------------------------------------------------------------
+
 -- Item transfer (tick-based)
-------------------------------------------------------------
+
 
 script.on_nth_tick(1, function()
   ensure_globals()

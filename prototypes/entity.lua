@@ -7,7 +7,7 @@ data:extend({
   max_health = 5000,
   
   
-  collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
+  collision_box = {{-4, -4}, {4, 4}},
   selection_box = {{-5, -5}, {5, 5}},
   
   

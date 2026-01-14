@@ -11,7 +11,7 @@ data:extend({
       max_health = 5000,
   
       collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
-      selection_box = {{-5, -5}, {5, 5}},
+      selection_box = {{-4.5, -4.5}, {4.5, 4.5}},
   
       crafting_categories = {"crafting"},
       crafting_speed = 1,
@@ -23,10 +23,8 @@ data:extend({
       },
       energy_usage = "5GW",
   
-      -- Factorio 2.0 field (correct place)
       fluid_boxes_off_when_no_fluid_recipe = false,
   
-      -- ✅ FIXED: no extra nesting
       fluid_boxes = {
         {
           production_type = "input",
